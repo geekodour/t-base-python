@@ -17,6 +17,7 @@ ipython = "^8.13.2"
 isort = "^5.12.0"
 ruff = "^0.0.270"
 black = "^23.3.0"
+snoop = "^0.4.3"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"
