@@ -5,6 +5,7 @@
 ** Project layout
 - Have all files that you intend to ~execute~ in the top-level directory
 - Only import things that are at the same level or nested folders
+*** src vs flat layout
 
 * Style and other suggestions on python
 ** Workflow
