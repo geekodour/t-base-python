@@ -1,10 +1,11 @@
 [tool.poetry]
-name = "bake"
+name = "bake-python"
 version = "0.1.0"
 description = "A bakeshop"
 authors = ["Hrishikesh Barman <oss@geekodour.org>"]
 license = "MIT"
 readme = "README.org"
+packages = [{include = "bake", from = "src"}]
 
 [tool.poetry.dependencies]
 # tool.*.group.*.dependencies$ : These can only be installed via poetry

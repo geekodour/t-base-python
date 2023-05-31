@@ -3,9 +3,16 @@
 - Remove friction of setup of new project
 - Remove friction of writing the initial tests
 ** Project layout
+- This follows src layout w poetrty (~--src~) as it integrates better w pytest atm
 - Have all files that you intend to ~execute~ in the top-level directory
 - Only import things that are at the same level or nested folders
 *** src vs flat layout
+- See [[https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/][src layout vs flat layout]]
+- src layout
+  - Putting your package inside a src directory means that you have to install it the way your users will
+  - Python implicitly adds the current directory to ~sys.path~
+- Flat layout
+  - This is good if the python project just has one package. This is normally the case. One repo = one python package. The name of the repo in pyproject is the same as the directory name in top level.
 
 * Style and other suggestions on python
 ** Workflow
