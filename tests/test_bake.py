@@ -4,14 +4,14 @@ import pytest
 
 from bake import kitchen
 
-LOGGER = logging.getLogger(__name__)
+L = logging.getLogger(__name__)
 
 
 def test_example_assert_and_logger():
-    LOGGER.info(__name__)
-    LOGGER.warning("eggs warning")
-    LOGGER.error("eggs error")
-    LOGGER.critical("eggs critical")
+    L.info(__name__)
+    L.warning("eggs warning")
+    L.error("eggs error")
+    L.critical("eggs critical")
     assert kitchen.do_something() == 22
 
 

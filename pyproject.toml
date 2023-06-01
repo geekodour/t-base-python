@@ -11,6 +11,7 @@ packages = [{include = "bake", from = "src"}]
 # tool.*.group.*.dependencies$ : These can only be installed via poetry
 # tool.poetry.*$ : These can be installed via pip also
 python = "^3.10"
+structlog = "^23.1.0"
 
 [tool.poetry.group.dev.dependencies]
 pudb = "^2022.1.3"
