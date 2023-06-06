@@ -1,13 +1,27 @@
-set -euxo pipefail
+#!/usr/bin/env bash
+#
+# A proper description
+# of what this script does
 
-# Add set -xeuo pipefail to the top of your script and run again. You'll get
-# verbose logs of everything the script does, and it'll stop immediately if any
-# command results in an error, instead of chugging along (the default).
+# Tips
+# - Running directory
+#   - The script should be runnable from any directory
+#   - If not, it should fail with a bang if run from the wrong directory
+# - Default values
+#   - Chaining: DOCKER_LABEL=${GIT_TAG:-${GIT_COMMIT_AND_DATE:-latest}}
+# - [[  ]]
+#   - Use [[ ]] for conditions in if/while, instead of [ ] or test
+#   - if [ -f "$file" ] vs if [[ -f $file ]]
+#   - if [ "$answer" = y -o "$answer" = yes ] vs if [[ $answer =~ ^y(es)?$ ]]
+#   - Use (( … )) or $(( … )) for numericals
+# - Misc
+#   - Curly brackets { } don't create subshells, round brackets do
+#   - Try making use of stdin & stdout redirection vs using filenames
+#     - Redirect error echo to >&2
+#   - use "local" variables
 
-# Once you've fixed it, remove the x — but leave the rest, and include it in every
-# shell script you writer, forever. You'll thank me.
-
-# TODO write explainers
-# https://blog.yossarian.net/2020/01/23/Anybody-can-write-good-bash-with-a-little-effort
-# https://sharats.me/posts/shell-script-best-practices/
-# https://google.github.io/styleguide/shellguide.html
+set -euo pipefail
+# -e : common errors fatal, fail early (last command)
+# -u : undefined variables are fatal
+# -x : (optional) verbose log
+# -o pipefail: if using |, exit code will be of the failed command
