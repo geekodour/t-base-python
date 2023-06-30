@@ -14,12 +14,10 @@ def setup_snoop_dogg():
     snoop.install(snoop="ss")
 
 
+# Current format is set based on the fact that we're using structlog,
+# but otheriwse following works fine.
+# FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 def setup_stdlogger():
-    """
-    Current format is set based on the fact that we're using structlog,
-    but otheriwse following works fine.
-    FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    """
     DATEFMT = "%d-%m-%Y %I:%M:%S %p"
     FORMAT = "%(message)s"
     logging.basicConfig(
@@ -30,12 +28,10 @@ def setup_stdlogger():
     )
 
 
+# NOTE: we are using itertools.chain because processors is Iterable and does not
+#       support + operator based on mypy errorlog
+#       processors = processors + [structlog.dev.ConsoleRenderer()]
 def get_structlog_processors() -> Iterable[Processor]:
-    """
-    we are using itertools.chain because processors is Iterable and does not
-    support + operator based on mypy errorlog
-    processors = processors + [structlog.dev.ConsoleRenderer()]
-    """
     processors: Iterable[Processor] = [
         structlog.stdlib.add_logger_name,
         structlog.stdlib.add_log_level,
@@ -62,11 +58,9 @@ def get_structlog_processors() -> Iterable[Processor]:
         ]
 
 
+# structlog logger
+# see https://www.structlog.org/en/stable/contextvars.html
 def setup_structlog():
-    """
-    structlog logger
-    see https://www.structlog.org/en/stable/contextvars.html
-    """
     structlog.configure(
         logger_factory=structlog.stdlib.LoggerFactory(),
         cache_logger_on_first_use=True,
@@ -76,6 +70,8 @@ def setup_structlog():
 
 
 def init():
+    # debug
     setup_snoop_dogg()
+    # logging
     setup_stdlogger()
     setup_structlog()
