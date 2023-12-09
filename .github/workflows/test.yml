@@ -16,7 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install poetry
-        run: pipx install poetry ruff
+        run: pipx install poetry
+      - name: Install ruff
+        run: pipx install ruff
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
